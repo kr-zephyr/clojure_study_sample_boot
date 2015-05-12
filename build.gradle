@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        //Required repos
+        mavenCentral()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
+    }
+    dependencies {
+        //Required dependency for spring-boot plugin
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.3.BUILD-SNAPSHOT'
+    }
+}
+ 
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'spring-boot'
+ 
+war {
+    baseName = 'companies'
+    version =  '0.1'
+}
+ 
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+}
+ 
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-jdbc'
+    compile 'org.mybatis:mybatis:3.2.8'
+    compile 'org.mybatis:mybatis-spring:1.2.2'
+    compile 'jstl:jstl:1.2'
+    compile 'com.h2database:h2'
+    //Required dependency for JSP
+    providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
+}
